@@ -1,16 +1,13 @@
 import React from "react";
+import Home from "../components2/Home";
 
 function Footer() {
   return (
-    <div className="bg-gray-500 p-6 my-10">
-      <div className="flex justify-between">
-        <button className="bg-black opacity-40 px-6 py-4 text-white tracking-wider mr-6 sm:mr-8 md:mr-10">
-          Previous
-        </button>
-        <button className="bg-black px-6 py-4 text-white tracking-wider hover:bg-white hover:text-black hover:border-black border-2 border-transparent transition duration-300 hover:font-bold">
-          Next
-        </button>
-      </div>
+    <div>
+      <h1 className="py-16 text-center text-5xl font-bold bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500 text-transparent">
+        Created By
+      </h1>
+      <Home />
     </div>
   );
 }

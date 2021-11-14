@@ -1,24 +1,37 @@
 import React from "react";
+import Button from "../components/Button";
+import svg from "../img/svg-1.svg";
 
 function Card(props) {
+  const darkTheme = `bg-gray-800 text-white font-roboto lg:overflow-auto w-full md:h-screen flex flex-col ${
+    props.alternate ? "lg:flex-row-reverse" : "lg:flex-row"
+  } lg:px-16 justify-center pt-32 md:pt-64 lg:pt-32 items-center`;
+  const whiteTheme = `bg-white text-black font-roboto lg:overflow-auto w-full md:h-screen flex ${
+    props.alternate ? "lg:flex-row-reverse" : "lg:flex-row"
+  } flex-col  lg:px-16 justify-center pt-32 md:pt-64 lg:pt-32 items-center`;
   return (
-    <div className="bg-white text-black mb-16 shadow-lg overflow-hidden md:mx-auto lg:mr-0 w-full ">
-      <div
-        style={{ backgroundImage: `url(${props.content.img})` }}
-        className="w-full h-52 md:h-64 bg-no-repeate bg-cover bg-top transform hover:scale-110 tranistion duration-500"
-      ></div>
-      <div className="p-4">
-        <h1 className="text-2xl py-1 mb-2">{props.content.heading}</h1>
-        <p className="mb-2 text-gray-600 text-md">
-          {props.content.descriptionHeading} <span>{props.content.date}</span>
+    <div className={`${props.theme === "dark" ? darkTheme : whiteTheme}`}>
+      <div className="w-11/12 lg:w-1/2 ">
+        <span className="font-semibold leading-relaxed inline-block text-pink-600 tracking-wide">
+          {props.title}
+        </span>
+        <h1 className="text-3xl font-bold tracking-wider pb-6 pt-4 ">
+          {props.heading}
+        </h1>
+        <p
+          className={`"tracking-wider text-lg ${
+            props.theme === "black" ? "opacity-80" : "text-lg"
+          } z-10"`}
+        >
+          {props.para}
         </p>
-        <p>{props.content.description}</p>
+        <Button name={props.btn} />
       </div>
-      <div>
-        <button className="border-2 border-black text-lg font-bold tracking-wide flex space-x-2 px-6 py-4 mx-auto mb-6 group hover:bg-yellow-500 hover:text-black transition duration-300 hover:border-transparent">
-          READ MORE
-        </button>
-      </div>
+      <img
+        src={props.svg}
+        className="w-80 h-80 flex-shrink sm:w-3/4 sm:h-3/4 md:w-full md:h-full"
+        alt="not found"
+      />
     </div>
   );
 }
